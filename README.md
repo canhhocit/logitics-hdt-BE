@@ -1,93 +1,51 @@
-# backend
+# HDT Logistics - Backend Service
 
+Hệ thống Backend API & Xử lý nghiệp vụ cho HDT Logistics.
 
+## Công nghệ sử dụng
 
-## Getting started
+- **Java**: 17 (Eclipse Temurin)
+- **Framework**: Spring Boot 3.2.x (Spring Web, Spring Data JPA, Spring Security)
+- **Database**: PostgreSQL 15 (cùng Flyway Migration)
+- **Cache**: Redis 7
+- **Authentication**: JWT (JSON Web Token)
+- **Build tool**: Maven 3.9+
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## Cấu trúc thư mục
 
 ```
-cd existing_repo
-git remote add origin https://hgr0a62zxby.sn.mynetname.net:3004/dev/logitics-hdt/source-code/backend.git
-git branch -M main
-git push -uf origin main
+backend/
+├── src/
+│   ├── main/
+│   │   ├── java/com/hdlogistics/
+│   │   │   ├── auth/          # Quản trị người dùng & Xác thực JWT
+│   │   │   ├── cms/           # Quản lý nội dung (Dịch vụ, Bài viết, Menu, Tracking, Cài đặt)
+│   │   │   ├── lead/          # Tiếp nhận Lead, Báo giá & Liên hệ
+│   │   │   └── common/        # Config, Base Entity, Exception handling, Security
+│   │   └── resources/
+│   │       ├── db/migration/  # Flyway SQL migrations (V1 -> V6)
+│   │       ├── db/seeds/      # Dữ liệu mẫu (Database seeds)
+│   │       └── application.yml
+│   └── test/
+├── Dockerfile
+└── pom.xml
 ```
 
-## Integrate with your tools
+## Hướng dẫn chạy
 
-- [ ] [Set up project integrations](http://192.168.1.46:8989/dev/logitics-hdt/source-code/backend/-/settings/integrations)
+### Chạy trực tiếp qua Maven
 
-## Collaborate with your team
+Yêu cầu đã cài đặt Java 17 và Maven, kết nối đến PostgreSQL (port 5432) và Redis (port 6379).
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+```bash
+mvn clean spring-boot:run
+```
 
-## Test and Deploy
+### Chạy qua Docker
 
-Use the built-in continuous integration in GitLab.
+```bash
+docker build -t hdlogistics-backend .
+docker run -p 8080:8080 hdlogistics-backend
+```
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+API mặc định phục vụ tại: `http://localhost:8080/api/v1`
