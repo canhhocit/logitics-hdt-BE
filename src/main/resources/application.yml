@@ -27,5 +27,5 @@ server:
 
 jwt:
   secret: ${JWT_SECRET:aGRsb2dpc3RpY3Nfc3VwZXJfc2VjcmV0X2tleV9uZWVkc190b19iZV9sb25nX2Vub3VnaF9mb3JfaG1hY19zaGEyNTY=}
-  expiration: 7200000 # 2 hours
-  refresh-expiration: 604800000 # 7 days
+  expiration: 86400000 # 24 hours
+  refresh-expiration: 2592000000 # 30 days
