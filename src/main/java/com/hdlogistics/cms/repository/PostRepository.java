@@ -12,4 +12,14 @@ public interface PostRepository extends JpaRepository<Post, UUID> {
     boolean existsBySlug(String slug);
     Page<Post> findByStatus(String status, Pageable pageable);
     Page<Post> findByCategoryIdAndStatus(UUID categoryId, String status, Pageable pageable);
+
+    @org.springframework.data.jpa.repository.Query("SELECT p FROM Post p WHERE " +
+            "(LOWER(p.title) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(p.slug) LIKE LOWER(CONCAT('%', :keyword, '%'))) AND " +
+            "(p.createdAt >= :fromDate) AND " +
+            "(p.createdAt <= :toDate)")
+    Page<Post> searchAdminPosts(
+            @org.springframework.data.repository.query.Param("keyword") String keyword,
+            @org.springframework.data.repository.query.Param("fromDate") java.time.Instant fromDate,
+            @org.springframework.data.repository.query.Param("toDate") java.time.Instant toDate,
+            Pageable pageable);
 }
