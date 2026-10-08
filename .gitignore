@@ -33,4 +33,4 @@ target/
 *.log
 logs/
 .env
-uploads/
+# uploads/

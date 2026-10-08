@@ -21,8 +21,12 @@ public class PostAdminController {
     private final PostAdminService postAdminService;
 
     @GetMapping
-    public ResponseEntity<ApiResponse<Page<Post>>> getAll(Pageable pageable) {
-        return ResponseEntity.ok(ApiResponse.success(postAdminService.getAll(pageable)));
+    public ResponseEntity<ApiResponse<Page<Post>>> getAll(
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME) java.time.LocalDateTime fromDate,
+            @RequestParam(required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME) java.time.LocalDateTime toDate,
+            Pageable pageable) {
+        return ResponseEntity.ok(ApiResponse.success(postAdminService.getAll(keyword, fromDate, toDate, pageable)));
     }
 
     @PostMapping
