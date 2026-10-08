@@ -60,18 +60,11 @@ public class CmsPublicController {
     // Posts & Categories
     // ─────────────────────────────────────────────
 
-    /** Tương thích ngược: ?size=N — trả danh sách đơn giản cho trang chủ */
     @GetMapping("/posts")
-    public ResponseEntity<ApiResponse<Object>> getPosts(
-            @RequestParam(required = false) Integer size,
+    public ResponseEntity<ApiResponse<Page<Post>>> getPosts(
             @RequestParam(required = false) String categorySlug,
             @PageableDefault(size = 10, sort = "publishedAt", direction = Sort.Direction.DESC) Pageable pageable) {
 
-        // Nếu truyền ?size=N (legacy) → trả List đơn giản (dùng cho NewsSection homepage)
-        if (size != null && categorySlug == null && pageable.getPageNumber() == 0) {
-            return ResponseEntity.ok(ApiResponse.success(cmsPublicService.getPublicPosts(size)));
-        }
-        // Ngược lại → trả Page (dùng cho trang news list)
         Page<Post> page = cmsPublicService.getPublicPostsPaged(categorySlug, pageable);
         return ResponseEntity.ok(ApiResponse.success(page));
     }
