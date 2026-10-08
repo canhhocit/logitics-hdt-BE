@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,8 +33,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 @Component("permEval")
 public class PermissionEvaluator {
 
-  @org.springframework.beans.factory.annotation.Autowired(required = false)
-  private StringRedisTemplate redisTemplate;
+  private final StringRedisTemplate redisTemplate;
+
+  public PermissionEvaluator(@Autowired(required = false) StringRedisTemplate redisTemplate) {
+    this.redisTemplate = redisTemplate;
+  }
 
   private static final String PERM_KEY_PREFIX = "perm:";
   private static final Duration PERM_CACHE_TTL = Duration.ofMinutes(5);
@@ -140,8 +146,9 @@ public class PermissionEvaluator {
       org.springframework.http.HttpEntity<Void> entity =
           new org.springframework.http.HttpEntity<>(headers);
 
-      org.springframework.http.ResponseEntity<Map> response =
-          rt.exchange(url, org.springframework.http.HttpMethod.GET, entity, Map.class);
+      ParameterizedTypeReference<Map<String, Object>> typeRef = new org.springframework.core.ParameterizedTypeReference<>() {};
+      org.springframework.http.ResponseEntity<Map<String, Object>> response =
+          rt.exchange(url, org.springframework.http.HttpMethod.GET, entity, typeRef);
 
       if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
         Map<String, Object> body = response.getBody();
