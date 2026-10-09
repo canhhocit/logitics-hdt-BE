@@ -15,6 +15,7 @@ public class LeadRequest {
     private String email;
     private String company;
     private UUID serviceId;
+    private String serviceName;
     private String message;
     private String source;
     private String sourcePage;

@@ -28,6 +28,7 @@ public class LeadPublicService {
                 .sourcePage(request.getSourcePage())
                 .ipAddress(ipAddress)
                 .status("NEW")
+                .serviceName(request.getServiceName())
                 .build();
 
         if (request.getServiceId() != null) {
