@@ -21,7 +21,7 @@ public class LogisticsServiceAdminService {
 
     @Transactional(readOnly = true)
     public Page<LogisticsService> getAll(Pageable pageable) {
-        return logisticsServiceRepository.findAll(pageable);
+        return logisticsServiceRepository.findByStatusNot("DELETED", pageable);
     }
 
     @Transactional
@@ -81,7 +81,8 @@ public class LogisticsServiceAdminService {
                 .orElseThrow(() -> new BaseException("Dịch vụ không tồn tại", ErrorCode.RESOURCE_NOT_FOUND, 404));
         
         // Soft delete for service to avoid breaking existing Leads
-        service.setStatus("INACTIVE");
+        service.setStatus("DELETED");
+        service.setSlug(service.getSlug() + "-deleted-" + System.currentTimeMillis()); // Free up the slug
         logisticsServiceRepository.save(service);
     }
 }
