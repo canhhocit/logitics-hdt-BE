@@ -11,4 +11,5 @@ public interface LogisticsServiceRepository extends JpaRepository<LogisticsServi
     boolean existsBySlug(String slug);
     List<LogisticsService> findByStatusOrderByOrderNoAsc(String status);
     long countByStatus(String status);
+    org.springframework.data.domain.Page<LogisticsService> findByStatusNot(String status, org.springframework.data.domain.Pageable pageable);
 }

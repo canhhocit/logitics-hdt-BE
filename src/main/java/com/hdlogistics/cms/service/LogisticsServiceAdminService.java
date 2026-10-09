@@ -21,7 +21,7 @@ public class LogisticsServiceAdminService {
 
     @Transactional(readOnly = true)
     public Page<LogisticsService> getAll(Pageable pageable) {
-        return logisticsServiceRepository.findAll(pageable);
+        return logisticsServiceRepository.findByStatusNot("DELETED", pageable);
     }
 
     @Transactional
@@ -36,6 +36,9 @@ public class LogisticsServiceAdminService {
                 .orderNo(request.getOrderNo() != null ? request.getOrderNo() : 0)
                 .thumbnail(request.getThumbnail())
                 .intro(request.getIntro())
+                .shortDesc(request.getShortDesc())
+                .icon(request.getIcon())
+                .color(request.getColor())
                 .contentBlocks(request.getContentBlocks())
                 .seoTitle(request.getSeoTitle())
                 .seoDesc(request.getSeoDesc())
@@ -59,6 +62,9 @@ public class LogisticsServiceAdminService {
         service.setOrderNo(request.getOrderNo() != null ? request.getOrderNo() : 0);
         service.setThumbnail(request.getThumbnail());
         service.setIntro(request.getIntro());
+        service.setShortDesc(request.getShortDesc());
+        service.setIcon(request.getIcon());
+        service.setColor(request.getColor());
         service.setContentBlocks(request.getContentBlocks());
         service.setSeoTitle(request.getSeoTitle());
         service.setSeoDesc(request.getSeoDesc());
@@ -75,7 +81,8 @@ public class LogisticsServiceAdminService {
                 .orElseThrow(() -> new BaseException("Dịch vụ không tồn tại", ErrorCode.RESOURCE_NOT_FOUND, 404));
         
         // Soft delete for service to avoid breaking existing Leads
-        service.setStatus("INACTIVE");
+        service.setStatus("DELETED");
+        service.setSlug(service.getSlug() + "-deleted-" + System.currentTimeMillis()); // Free up the slug
         logisticsServiceRepository.save(service);
     }
 }

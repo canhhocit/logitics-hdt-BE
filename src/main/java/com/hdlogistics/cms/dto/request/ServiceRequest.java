@@ -14,7 +14,10 @@ public class ServiceRequest {
     
     private Integer orderNo;
     private String thumbnail;
+    private String shortDesc;
     private String intro;
+    private String icon;
+    private String color;
     private Map<String, Object> contentBlocks;
     private String seoTitle;
     private String seoDesc;
