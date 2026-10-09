@@ -8,11 +8,11 @@
 		<version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.hdlogistics</groupId>
-	<artifactId>hdlogistics-backend</artifactId>
+	<groupId>com.hdtlogistics</groupId>
+	<artifactId>hdtlogistics-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hdlogistics-backend</name>
-	<description>Monolithic Backend for HDLogistics</description>
+	<name>hdtlogistics-backend</name>
+	<description>Monolithic Backend for HDTLogistics</description>
 
 	<properties>
 		<java.version>17</java.version>
