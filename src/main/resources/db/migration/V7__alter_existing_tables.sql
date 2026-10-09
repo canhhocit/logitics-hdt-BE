@@ -68,7 +68,7 @@ INSERT INTO site_settings (key, value, description, created_by) VALUES
   ('hotline_raw',           '0929959699',                      'Hotline raw (dùng cho tel: link)', 'system'),
   ('hotline_contact',       '0563 877 509',                    'Số liên hệ phụ trang Liên hệ', 'system'),
   ('hotline_contact_raw',   '0563877509',                      'Số liên hệ phụ raw', 'system'),
-  ('email_sales',           'sales@hdlogistics.vn',            'Email kinh doanh', 'system'),
+  ('email_sales',           'sales@hdtlogistics.vn',            'Email kinh doanh', 'system'),
   ('company_short_name',    'HDT Logistics',                   'Tên viết tắt công ty', 'system'),
   ('company_full_name',     'Công ty TNHH Đầu Tư Kinh Doanh Và Xây Dựng Hải Đăng', 'Tên đầy đủ công ty', 'system'),
   ('tax_code',              '4601607741',                      'Mã số thuế', 'system'),

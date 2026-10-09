@@ -17,7 +17,7 @@ Hệ thống Backend API & Xử lý nghiệp vụ cho HDT Logistics.
 backend/
 ├── src/
 │   ├── main/
-│   │   ├── java/com/hdlogistics/
+│   │   ├── java/com/hdtlogistics/
 │   │   │   ├── auth/          # Quản trị người dùng & Xác thực JWT
 │   │   │   ├── cms/           # Quản lý nội dung (Dịch vụ, Bài viết, Menu, Tracking, Cài đặt)
 │   │   │   ├── lead/          # Tiếp nhận Lead, Báo giá & Liên hệ
@@ -44,8 +44,8 @@ mvn clean spring-boot:run
 ### Chạy qua Docker
 
 ```bash
-docker build -t hdlogistics-backend .
-docker run -p 8080:8080 hdlogistics-backend
+docker build -t hdtlogistics-backend .
+docker run -p 8080:8080 hdtlogistics-backend
 ```
 
 API mặc định phục vụ tại: `http://localhost:8080/api/v1`

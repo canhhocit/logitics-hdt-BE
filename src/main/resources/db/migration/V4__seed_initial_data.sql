@@ -2,9 +2,9 @@
 INSERT INTO site_settings (key, value, description, created_by) VALUES
   ('hotline', '0929 959 699', 'Số hotline hiển thị trên top bar', 'system'),
   ('working_hours', '06:00 - 22:00', 'Giờ làm việc', 'system'),
-  ('email', 'info@hdlogistics.vn', 'Email liên hệ', 'system'),
-  ('facebook_url', 'https://facebook.com/hdlogistics', 'Link Facebook', 'system'),
-  ('zalo_url', 'https://zalo.me/hdlogistics', 'Link Zalo', 'system'),
+  ('email', 'info@hdtlogistics.vn', 'Email liên hệ', 'system'),
+  ('facebook_url', 'https://facebook.com/hdtlogistics', 'Link Facebook', 'system'),
+  ('zalo_url', 'https://zalo.me/hdtlogistics', 'Link Zalo', 'system'),
   ('counter_staff', '50+', 'Số lượng nhân viên', 'system'),
   ('counter_offices', '5', 'Số lượng văn phòng', 'system'),
   ('counter_shipments', '1500+', 'Số lượng chuyến hàng', 'system'),
