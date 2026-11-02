@@ -3,5 +3,8 @@
 .DS_Store
 .idea
 target/
+uploads/
+.env
+.env.*
 *.log
 Dockerfile
