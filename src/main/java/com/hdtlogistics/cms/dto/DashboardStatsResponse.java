@@ -11,4 +11,6 @@ public class DashboardStatsResponse {
     private long totalPosts;
     private long totalOffices;
     private long totalVisits;
+    private long newApplications;
+    private long totalApplications;
 }

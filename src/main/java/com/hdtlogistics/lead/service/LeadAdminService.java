@@ -38,14 +38,9 @@ public class LeadAdminService {
         Lead lead = leadRepository.findById(id)
                 .orElseThrow(() -> new BaseException("Không tìm thấy Lead", ErrorCode.RESOURCE_NOT_FOUND, 404));
 
-        String oldStatus = lead.getStatus();
-        String newStatus = request.getStatus().toUpperCase();
+        String newStatus = request.getStatus().trim().toUpperCase();
 
-        // State machine validation (SD-07)
-        if ("CLOSED".equals(oldStatus) && "NEW".equals(newStatus)) {
-            throw new BaseException("Không thể chuyển trạng thái từ CLOSED về NEW", ErrorCode.INVALID_STATUS_TRANSITION, 422);
-        }
-
+        // Cập nhật trạng thái CRM linh hoạt cho kinh doanh (NEW, QUOTING, CLOSED_WON, CLOSED_LOST)
         lead.setStatus(newStatus);
         return leadRepository.save(lead);
     }
