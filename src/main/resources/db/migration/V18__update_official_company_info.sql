@@ -1,4 +1,4 @@
--- V17: Đồng bộ thông tin đăng ký doanh nghiệp & định danh pháp lý chính thức HDT Logistics
+-- V18: Đồng bộ thông tin đăng ký doanh nghiệp & định danh pháp lý chính thức HDT Logistics
 -- Căn cứ thông tin chính thức:
 -- Tên công ty: CÔNG TY CỔ PHẦN HDT LOGISTICS
 -- Mã số thuế / MSDN: 0111638260
@@ -33,4 +33,4 @@ WHERE name = 'Chi nhánh Hà Nội';
 -- Cập nhật số điện thoại người đại diện trong danh bạ liên hệ nội bộ nếu có
 UPDATE contact_persons 
 SET phone = '0911 188 726' 
-WHERE name ILIKE '%Trần Văn Toản%';
+WHERE full_name ILIKE '%Trần Văn Toản%';
