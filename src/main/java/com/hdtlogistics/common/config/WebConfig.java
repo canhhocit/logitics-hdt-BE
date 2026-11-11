@@ -15,7 +15,8 @@ public class WebConfig implements WebMvcConfigurer {
                     "http://127.0.0.1:*",
                     "http://192.168.*.*:*",
                     "https://*.hdtlogistics.vn",
-                    "https://*.hdtlogistics.vn"
+                    "https://*.vercel.app",
+                    "https://*.onrender.com"
                 )
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")

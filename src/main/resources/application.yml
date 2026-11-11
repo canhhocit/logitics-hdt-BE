@@ -8,7 +8,7 @@ spring:
   application:
     name: hdtlogistics-backend
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:hdtlogistics}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:hdtlogistics}}
     username: ${DB_USER:postgres}
     password: ${DB_PASS:postgres}
   jpa:
@@ -32,7 +32,7 @@ spring:
         enabled: ${REDIS_SSL:false}
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 jwt:
   secret: ${JWT_SECRET:aGRsb2dpc3RpY3Nfc3VwZXJfc2VjcmV0X2tleV9uZWVkc190b19iZV9sb25nX2Vub3VnaF9mb3JfaG1hY19zaGEyNTY=}
