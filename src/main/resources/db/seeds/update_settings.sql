@@ -1,3 +1,15 @@
-UPDATE site_settings SET value = '+84 929 959 699' WHERE key = 'hotline';
-UPDATE site_settings SET value = 'info@hdtlogistics.vn' WHERE key = 'email';
-UPDATE site_settings SET value = 'Công ty TNHH Đầu Tư Kinh Doanh Và Xây Dựng Hải Đăng' WHERE key = 'company_name';
+UPDATE site_settings SET value = '0911 188 726' WHERE key = 'hotline';
+UPDATE site_settings SET value = '0911188726' WHERE key = 'hotline_raw';
+UPDATE site_settings SET value = '0911 188 726' WHERE key = 'hotline_contact';
+UPDATE site_settings SET value = '0911188726' WHERE key = 'hotline_contact_raw';
+UPDATE site_settings SET value = 'hdt.logistics.jsc@gmail.com' WHERE key = 'email';
+UPDATE site_settings SET value = 'hdt.logistics.jsc@gmail.com' WHERE key = 'email_sales';
+UPDATE site_settings SET value = 'CÔNG TY CỔ PHẦN HDT LOGISTICS' WHERE key = 'company_full_name';
+UPDATE site_settings SET value = 'HDT LOGISTICS., JSC' WHERE key = 'company_short_name';
+UPDATE site_settings SET value = 'HDT LOGISTICS JOINT STOCK COMPANY' WHERE key = 'company_int_name';
+UPDATE site_settings SET value = '0111638260' WHERE key = 'tax_code';
+UPDATE site_settings SET value = 'Số 46/9/11 đường An Thọ, Xã An Khánh, TP Hà Nội, Việt Nam' WHERE key = 'company_address';
+UPDATE site_settings SET value = 'TRẦN VĂN TOẢN' WHERE key = 'representative';
+UPDATE site_settings SET value = 'Đang hoạt động' WHERE key = 'business_status';
+UPDATE site_settings SET value = 'Sở Kế hoạch và Đầu tư TP Hà Nội' WHERE key = 'license_org';
+UPDATE site_settings SET value = '08/04/2024' WHERE key = 'license_date';
