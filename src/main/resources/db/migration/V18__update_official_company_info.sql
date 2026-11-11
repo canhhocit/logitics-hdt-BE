@@ -34,3 +34,4 @@ WHERE name = 'Chi nhánh Hà Nội';
 UPDATE contact_persons 
 SET phone = '0911 188 726' 
 WHERE full_name ILIKE '%Trần Văn Toản%';
+

@@ -19,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -146,6 +148,11 @@ public class CmsPublicService {
 
     public List<JobPosting> getPublicJobs() {
         return jobPostingRepository.findByStatusOrderByOrderNoAsc("OPEN");
+    }
+
+    public Optional<JobPosting> getPublicJobById(UUID id) {
+        return jobPostingRepository.findById(id)
+                .filter(job -> "OPEN".equals(job.getStatus()));
     }
 
     // ─────────────────────────────────────────────

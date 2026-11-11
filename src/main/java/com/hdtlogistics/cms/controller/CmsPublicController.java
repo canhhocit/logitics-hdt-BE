@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/public")
@@ -119,6 +120,13 @@ public class CmsPublicController {
     @GetMapping("/jobs")
     public ResponseEntity<ApiResponse<List<JobPosting>>> getJobs() {
         return ResponseEntity.ok(ApiResponse.success(cmsPublicService.getPublicJobs()));
+    }
+
+    @GetMapping("/jobs/{id}")
+    public ResponseEntity<ApiResponse<JobPosting>> getJobById(@PathVariable UUID id) {
+        return cmsPublicService.getPublicJobById(id)
+                .map(job -> ResponseEntity.ok(ApiResponse.success(job)))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     // ─────────────────────────────────────────────
