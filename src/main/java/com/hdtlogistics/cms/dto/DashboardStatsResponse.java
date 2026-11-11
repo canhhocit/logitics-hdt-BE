@@ -8,5 +8,7 @@ import lombok.Data;
 public class DashboardStatsResponse {
     private long newLeads;
     private long activeServices;
+    private long totalPosts;
+    private long totalOffices;
     private long totalVisits;
 }

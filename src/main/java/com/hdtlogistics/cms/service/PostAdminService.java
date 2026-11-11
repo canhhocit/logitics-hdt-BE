@@ -24,11 +24,11 @@ public class PostAdminService {
     private final CategoryRepository categoryRepository;
 
     @Transactional(readOnly = true)
-    public Page<Post> getAll(String keyword, LocalDateTime fromDate, LocalDateTime toDate, Pageable pageable) {
+    public Page<Post> getAll(UUID categoryId, String keyword, LocalDateTime fromDate, LocalDateTime toDate, Pageable pageable) {
         String kw = (keyword == null) ? "" : keyword;
         java.time.Instant from = fromDate != null ? fromDate.atZone(java.time.ZoneId.systemDefault()).toInstant() : java.time.Instant.EPOCH;
         java.time.Instant to = toDate != null ? toDate.atZone(java.time.ZoneId.systemDefault()).toInstant() : java.time.Instant.parse("2999-12-31T23:59:59Z");
-        return postRepository.searchAdminPosts(kw, from, to, pageable);
+        return postRepository.searchAdminPosts(categoryId, kw, from, to, pageable);
     }
 
     @Transactional
